@@ -28,4 +28,5 @@ class my_threads(threading.Thread) :
             T = int(time.time())
             probe = datetime.datetime.utcfromtimestamp(T)
             next_probe = probe + datetime.timedelta(seconds=60)
+            MAC=
             #MACs VLAN oid?
