@@ -1,3 +1,9 @@
+
 <?php
-$db = new SQLITE3(' mydatabase.db')
+class mydb extends SQLite3 {
+      function __construct() {
+         $this->open('mydatabase.db');
+      }
+   }
+ $db = new mydb();
 ?>
