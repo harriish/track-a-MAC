@@ -20,7 +20,7 @@ EOF;
         
         
         $sqlite2 = <<<EOF
-        CREATE TABLE IF NOT EXISTS  (IP VARCHAR, PORT VARCHAR, COMMUNITY VARCHAR, VERSION VARCHAR, FIRST_PROBE VARCHAR, LATEST_PROBE VARCHAR, Failed_attempts INTEGER);
+        CREATE TABLE IF NOT EXISTS Status  (IP VARCHAR, PORT VARCHAR, COMMUNITY VARCHAR, VERSION VARCHAR, FIRST_PROBE VARCHAR, LATEST_PROBE VARCHAR, Failed_attempts INTEGER);
 EOF;
     $run2 = $db->exec(sqlite2);
     if (!$run2) {
@@ -28,7 +28,7 @@ EOF;
 
 
         $sql3 = <<<EOF
-        INSERT INTO Devices (IP,PORT,COMMUNITY,VERSION)
+        INSERT INTO info (IP,PORT,COMMUNITY,VERSION)
         VALUES ('$ip','$port','$community','$version');
 EOF;
       $run3 = $db->exec($sql3);
