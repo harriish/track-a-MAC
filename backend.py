@@ -5,7 +5,7 @@ import threading
 import sqlite3
 import exceptions
 import sys
-
+from easysnmp import *
 
 
 class my_threads(threading.Thread) :
