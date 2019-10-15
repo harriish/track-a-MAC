@@ -14,7 +14,7 @@ else {
     $sqlite1 = <<<EOF
         CREATE TABLE IF NOT EXISTS info (IP VARCHAR(30), PORT VARCHAR(30), COMMUNITY VARCHAR(30), VERSION VARCHAR(10));
 EOF;
-    $run1 = $db->exec(sqlite1);
+    $run1 = $db->exec($sqlite1);
     if (!$run1) {
         echo $db->lastErrorMsg();}#Returns text which describes failed SQLite request
         
@@ -22,7 +22,7 @@ EOF;
         $sqlite2 = <<<EOF
         CREATE TABLE IF NOT EXISTS Status  (IP VARCHAR(30), PORT VARCHAR(30), COMMUNITY VARCHAR(30), VERSION VARCHAR(30), FIRST_PROBE VARCHAR(30), LATEST_PROBE(30) VARCHAR(30), FAILED_ATTEMPTS INTEGER(30));
 EOF;
-    $run2 = $db->exec(sqlite2);
+    $run2 = $db->exec($sqlite2);
     if (!$run2) {
         echo $db->lastErrorMsg();}
 
