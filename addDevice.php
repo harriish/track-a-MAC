@@ -1,18 +1,18 @@
 <?php
 
-include('config.php')
+include('config.php');
 
 if (empty($_GET)){
     echo "none";
     }
 else {
-    $ip = $_GET["ip"]
-    $port = $_GET["port"];
-    $community = $_GET["community"];
-    $version = $_GET["version"];
+    $ip = htmlspecialchars($_GET["ip"]);
+    $port = htmlspecialchars($_GET["port"]);
+    $community = htmlspecialchars($_GET["community"]);
+    $version = htmlspecialchars($_GET["version"]);
       
     $sqlite1 = <<<EOF
-        CREATE TABLE IF NOT EXISTS info (IP VARCHAR(30), PORT VARCHAR(30), COMMUNITY VARCHAR(30), VERSION VARCHAR(10));
+        CREATE TABLE IF NOT EXISTS info (IP VARCHAR, PORT VARCHAR, COMMUNITY VARCHAR, VERSION VARCHAR);
 EOF;
     $run1 = $db->exec($sqlite1);
     if (!$run1) {
@@ -20,7 +20,7 @@ EOF;
         
         
         $sqlite2 = <<<EOF
-        CREATE TABLE IF NOT EXISTS Status  (IP VARCHAR(30), PORT VARCHAR(30), COMMUNITY VARCHAR(30), VERSION VARCHAR(30), FIRST_PROBE VARCHAR(30), LATEST_PROBE(30) VARCHAR(30), FAILED_ATTEMPTS INTEGER(30));
+        CREATE TABLE IF NOT EXISTS status (IP VARCHAR, PORT VARCHAR, COMMUNITY VARCHAR, VERSION VARCHAR, FIRST_PROBE VARCHAR, LATEST_PROBE VARCHAR, Failed_attempts INTEGER);
 EOF;
     $run2 = $db->exec($sqlite2);
     if (!$run2) {
@@ -36,9 +36,10 @@ EOF;
         echo $db->LastErrorMsg();
         } else {
             echo "OK";
+            echo $ip,$port,$community,$version;
               }
     $sql4 = <<<EOF
-        INSERT INTO Status (IP,PORT,COMMUNITY,VERSION)
+        INSERT INTO status (IP,PORT,COMMUNITY,VERSION)
         VALUES ('$ip','$port','$community','$version');
 EOF;
       $run4 = $db->exec($sql4);
