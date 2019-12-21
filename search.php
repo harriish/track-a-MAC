@@ -9,15 +9,15 @@ else {
 
 
     $sq1 = <<<EOF
-                SELECT * FROM Lit WHERE LIKE ('$my_search_is',MACS) =1;
+                SELECT * FROM List WHERE LIKE "%$my_search_is%" ORDER BY MACS;
 EOF;
 
-$my_output_is = $db->query($sq1);
+$my_output_is = $db->query($sq1ite1);
 $data = array();
-while($row = $my_output_is->fetchArray() ) {
+while($row = $my_output_is->fetchArray(SQLITE3_ASSOC) ) {
 
 
-        $data[] = $row['IP']. "|" .$row['VLAN']. "|" .$row['PORT']. "|" .$row['MACS']. "\n";
+        $data[] = $row['DeviceIP']. "|" .$row['VLAN']. "|" .$row['PORT']. "|" . "$my_search_is";
     
     }
 
@@ -27,11 +27,10 @@ if($flag == 0){
 
 
 
-$count = $db->query('SELECT count(*) FROM info')
-while($check = $count->fetchArray(SQLITE_ASSOC)) {
-
+    $count = $db->query('SELECT count(*) FROM info')
+    while($check = $count->fetchArray(SQLITE_ASSOC)) {
         $number_of_devices = $check['count(*)'];#support wildcards
-        echo "we found no match in $number_of_devices";
+        echo "we found no match in $number_of_devices devices";
     }
 }
 
@@ -43,8 +42,7 @@ $total = count($my_result_is);
 
 for($i=0; $i < $total; $i++){
     echo $my_result_is[$i]. "\n";
-
-}
+    }
 }
 $db->close();
 ?>
