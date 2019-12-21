@@ -1,0 +1,117 @@
+'''failed to write a python backend program using OOPS concept
+and we have taken Dr.Patrik Arlos perl program as a reference 
+which is a program that accepts IP, community and version as input and then probes device as to
+reconstruct forwarding table that the device uses . '''
+
+#!/usr/bin/python
+import easysnmp
+import time, datetime
+import threading
+import sqlite3
+import exceptions
+import sys
+from easysnmp import *
+from sqlite3 import *
+from datetime import datetime
+
+#assign default vlan as 1
+VL = 'DEFAULT_VLAN(1)'
+def connecting(db_file):
+    connection = None
+    try:
+        connection = sqlite3.connect(db_file)
+    except Error as flag:
+        print(flag)
+    finally:
+        if connection:
+            data = connection.execute('Select * from info')
+            for agent in data:
+                ip = agent[0]; port = int(agent[1]); community = agent[2]; version = int(agent[3])
+                probe_device(ip, port, community, version, connection)
+            connection.close()
+def myfunc(ip, port, community, version, conn):
+    oids = {'dot1dTpFdbEntryAddress':'1.3.6.1.2.1.17.4.3.1.1',
+            'dot1dTpFdbEntryPort':'1.3.6.1.2.1.17.4.3.1.2',
+            'dot1qTpFdbEntryStatus':'1.3.6.1.2.1.17.4.3.1.3',
+            'dot1qTpFdbAddress':'1.3.6.1.2.17.7.1.2.2.1.1',
+            'dot1qTpFdbPort':'1.3.6.1.2.1.17.7.1.2.2.1.2',
+            'dot1qTpFdbStatus':'1.3.6.1.2.1.17.7.1.2.2.1.3',
+            'dot1qVlanStaticName':'1.3.6.1.2.1.17.7.1.4.3.1.1',
+            'sysDescr':'1.1.3.6.1.2.1.1.1',
+            'dot1dBasePortIfIndex':'1.3.6.1.2.1.17.1.4.1.2',
+            'vlans':'1.3.6.1.2.1.17.7.1.4.3.1.4'}
+    try:
+        session = Session(hostname=ip, remote_port=port, version=version, community=community)
+    except Exception as flag:
+        print(flag)
+        failed_attempts = connection.execute("select failed_attempts from switches where ip=?, port=?",(ip,port))
+        failed_attempts += 1
+        connection.execute("SELECT failed_attempts FROM info where ip=?, port=?",(ip,port))
+        connection.commit()
+    timeparameter = str(datetime.fromtimestamp(int(time.time())))
+
+    try:
+        oid_for_macs = session.walk(oids['dot1dTpFdbEntryAddress'])
+        oid_for_ports = session.walk(oids['dot1dTpFdbEntryPort'])
+        for i,j in zip(oid_for_macs,oid_for_ports):
+            oid = i.oid; oid_index = i.oid_index; snmp_type = i.snmp_type
+            mac = ':'.join('{:02x}'.format(ord(a)) for k in i.value)
+            port_parameter = j.value
+            data = connection.execute("SELECT * from List where (port=? and DeviceIP=?),"(port_parameter,ip))
+            gather_data = data/fetchall()
+
+            for l in gather_data:
+                i = l[3]
+            if len(gather_data)==0:
+                connection.execute('''INSERT INTO List ((DeviceIP, VLANs, port, MACS)) VALUES (?,?,?,?)''',(ip,VL,port_parameter,mac))
+                connection.commit()
+            elif len(gather_data)==1 and i.find(mac)==-1:
+                maclatest = i+","+mac
+                connection.execute('''UPDATE List set MACS=? where port=?,(maclatest,port_parameter))
+                connnection.commit()
+        vlan_num_array = []
+        vlan_name_array = []
+        vlans = session.walk(oids['vlans'])
+        vlan_index = session.walk(oids['dot1qVlanStaticName'])
+        vlan_array = []
+        vlan_oids_array = []
+        for m, n in zip(vlan_index, vlans):
+            value = ':'.join('{:02x}'.format(ord(x)) for o in vlan.value)
+            p = value.split(':')
+            oid = vlan.oid
+            vlan_oids_array.append(oid)
+            vname = index.value
+            vnum = oid.split('.')
+            v = str(vnums[-1])
+            q = ''
+            if vname != VL:
+                for r in range(len(values)):
+                    hexlist = values
+                    macs_hexadecimal = hexlist[r]
+                    scale = 16
+                    number_of_bits = 8
+                    orghex = bin(int(macs_hexadecimal, scale))[2:].zfill(number_of_bits)
+                    q = q + str(orghex)
+                    orghex = ''
+                    list_of_vlans = list(combine)
+                for r in range(len(list_of_vlans)):
+                    if list_of_vlans[r] == '1':
+                        num = i + 1
+                        vlan_name_array.append(str(vname) + '( + v + ')')
+                        vlan_num_array.append(num)
+        for r in range(len(vlan_num_array)):
+            portlan = '1'
+            connection.execute("UPDATE List set VLANs =? where port=?", (vlan_name_array[i],vlan_num_array))
+            connection.commit()
+    except Exception as e:
+        print(str(e)+' '+str(ip)+":"+str(port))
+    result = str(datetime.fromtimestamp(int(time.time)))
+    connection.execute("UPDATE info set FIRST_PROBE=?, LATEST_PROBE=? where (IP = ? and PORT = ?)",(timeparameter, result, ip, port))
+    connection.commit()
+
+if __name__=='__main__':
+    while True:
+        create_connection('mydatabase.db')
+        time.sleep()
+
+
