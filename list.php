@@ -2,19 +2,13 @@
 
 include('config.php');
 
-$read = $db->query('SELECT count(*) FROM List');
-while($i = $read->fetchArray(SQLITE3_ASSOC)){
-
-	if ($i['count(*)']==0) {
-		echo "we didn't find any assosiated mac addresses ";
+$sqlite1 =<<<EOF
+	SELECT * from List;
+EOF;
+	$result = $db->http_build_query($sqlite1);
+	while($row = $result->fetchArray(SQLITE3_ASSOC) ) {
+		echo  $row['DeviceIP']. "|" .$row['VLAN']. "|" .$row['PORT']. "|" .$row['MACS']. "\n";
 	}
+	$db->close();
 
-else{
-$statistics = $db->query('SELECT * FROM List');
-
-while ($row = $statistics->fetchArray()){
-	echo $row['IP']. "|" .$row['VLAN']. "|" .$row['PORT']. "|" .$row['MACS']. "\n";
-}
-}
-}
 ?>
