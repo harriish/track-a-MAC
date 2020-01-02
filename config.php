@@ -17,7 +17,7 @@ if(!$result){
 }
 $sqlite1 =<<<EOF
 
-      CREATE TABLE IF NOT EXISTS info (IP varchar not null,PORT varchar not null,COMMUNITY string not null ,VERSION varchar not null, FIRST_PROBE varchar, LATEST_PROBE varchar null,FAIED_ATTEMPTS int default 0 not null);
+      CREATE TABLE IF NOT EXISTS info (IP varchar not null,PORT varchar not null,COMMUNITY string not null ,VERSION varchar not null, FIRST_PROBE varchar, LATEST_PROBE varchar null,FAILED_ATTEMPTS int default 0 not null);
 
 EOF;
 
