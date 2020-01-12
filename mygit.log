@@ -1,0 +1,191 @@
+Author: nichurocks02 <nishkalrocks02@gmail.com>
+Date:   Sun Jan 5 09:00:06 2020 +0100
+
+    all scripts execute correctly
+
+
+
+commit 84d58c47f4e82c0413293d105731dde92036eb99 (HEAD -> master, origin/master, origin/HEAD)
+Author: Ivaturi Venkata Harish Kumar <harishkumarivaturi@gmail.com>
+Date:   Thu Jan 2 14:24:02 2020 +0000
+
+    Update README.md
+
+commit 6216767b7096399b743dbb8b96de891b11bb0147
+Author: Ivaturi Venkata Harish Kumar <harishkumarivaturi@gmail.com>
+Date:   Wed Jan 1 16:59:43 2020 +0000
+
+    updating readme through gui only this time
+
+commit bc8ea34fba039095aa925124504797fe7a2d6553
+Author: Ivaturi Venkata Harish Kumar <harishkumarivaturi@gmail.com>
+Date:   Wed Jan 1 16:53:48 2020 +0000
+
+    Update README.md
+
+nishkal@nishkal-VirtualBox:~/Documents/track-a-mac$ git log 
+commit 84d58c47f4e82c0413293d105731dde92036eb99 (HEAD -> master, origin/master, origin/HEAD)
+Author: Ivaturi Venkata Harish Kumar <harishkumarivaturi@gmail.com>
+Date:   Thu Jan 2 14:24:02 2020 +0000
+
+    Update README.md
+
+commit 6216767b7096399b743dbb8b96de891b11bb0147
+Author: Ivaturi Venkata Harish Kumar <harishkumarivaturi@gmail.com>
+Date:   Wed Jan 1 16:59:43 2020 +0000
+
+    updating readme through gui only this time
+
+commit bc8ea34fba039095aa925124504797fe7a2d6553
+Author: Ivaturi Venkata Harish Kumar <harishkumarivaturi@gmail.com>
+Date:   Wed Jan 1 16:53:48 2020 +0000
+
+    Update README.md
+
+commit b8f12416ffaf214cc0ab9b57574ab0affb893eaa
+Author: pavan gunda <pavangunda66@gmail.com>
+Date:   Sun Oct 27 16:26:33 2019 +0100
+
+    syntax error at line 3 solved
+
+commit a2070cf68688f2cbde16824320857ec5c38d17b8
+Author: pavan gunda <pavangunda66@gmail.com>
+Date:   Sun Oct 27 15:29:40 2019 +0100
+
+    removed tuple index out of range error
+
+commit b2e130782930dedb8bd836ef437b9181bdd43e3e
+Author: viswa <viswakanthreddy06@gmail.com>
+Date:   Thu Oct 24 01:10:31 2019 +0200
+
+    removed syntax error but needs to be test again
+
+commit 13157d05bd00b41c71f09b879e3628e7b56275c7
+Author: harish <harishkumarivaturi@gmail.com>
+Date:   Wed Oct 23 09:42:11 2019 +0200
+
+    backend in python completed but needs to be tested
+
+commit bc8a6a985ba983a31b2e72d47d604191effac29e
+Author: harish <harishkumarivaturi@gmail.com>
+Date:   Wed Oct 23 09:35:38 2019 +0200
+
+    added search.php
+
+commit e1d34a4a1141aa14b86ed58689639f93bf1c2954
+Author: Ivaturi Venkata Harish Kumar <harishkumarivaturi@gmail.com>
+Date:   Wed Oct 23 07:25:34 2019 +0000
+
+    removed extension .py as script has shebang.
+
+commit e2bf87eefd839fb27c2af476cb146ca38c155c18
+Author: sankeerthp <sapo18@student.bth.se>
+Date:   Fri Oct 18 22:05:39 2019 +0530
+
+    Update in removeDevice.php (Now Working)
+
+commit a4742645e7c4e71c3c7d618f6a9ed5592725c022
+Author: sankeerthp <sapo18@student.bth.se>
+Date:   Fri Oct 18 20:25:52 2019 +0530
+
+    modified test_addDevices.py
+
+commit d9475b0b53b8ddf85ca13c876aebc42973847c43
+Merge: a34abd5 82a6342
+Author: Nishkal <nichurocks02@gmail.com>
+Date:   Fri Oct 18 14:19:46 2019 +0200
+
+    Merge branch 'master' of host-2.nplab.bth.se:nishkalrocks02/track-a-mac
+
+commit a34abd596aad66b4b60206a7e2eb88cec9e96486
+Author: Nishkal <nichurocks02@gmail.com>
+Date:   Fri Oct 18 14:19:27 2019 +0200
+
+    added special html characters to the input variable
+
+commit 82a6342e6b6ccb107a934edf9d7dffc0d74fe5c7
+Author: Sankeerth Poojala <poojalasankeerth@gmail.com>
+Date:   Fri Oct 18 11:45:19 2019 +0000
+
+    Delete test_addDevices.php
+
+commit 366ed69cf5f045f2402efc0e32c35d11c7231e52
+Author: harish <harishkumarivaturi@gmail.com>
+Date:   Fri Oct 18 02:46:54 2019 +0530
+
+    corrected row element names
+
+commit e875b4f32b8c844cc7aafdd6ade8a434b8c3e211
+Author: Nishkal <nichurocks02@gmail.com>
+Date:   Thu Oct 17 21:02:49 2019 +0200
+
+    adding list.php and listDevs.php and edited test_addDevices.php,list and listDevs have not been tested
+
+commit 7ac1e943197e13048b39cd76e4a7e292d4710259
+Merge: fafac35 c6cf05d
+Author: harish <harishkumarivaturi@gmail.com>
+Date:   Thu Oct 17 23:44:29 2019 +0530
+
+    Merge branch 'master' of host-2.nplab.bth.se:nishkalrocks02/track-a-mac
+
+commit fafac35da80e21d5b2893366528f6ead90996860
+Author: harish <harishkumarivaturi@gmail.com>
+Date:   Thu Oct 17 23:42:33 2019 +0530
+
+    Added backend script 30%
+
+commit c6cf05dbc733dc3751724b4726a2b2bd45d22211
+Author: sankeerthp <sapo18@student.bth.se>
+Date:   Thu Oct 17 23:12:43 2019 +0530
+
+    First version of removeDevice.php
+
+commit 36845b238a18951cb21a1f0cd3f70acb0ea606cc
+Merge: 01b0018 0a54111
+Author: Nishkal <nichurocks02@gmail.com>
+Date:   Thu Oct 17 13:48:22 2019 +0200
+
+    pulling latest version of  branch 'master' of host-2.nplab.bth.se:nishkalrocks02/track-a-mac
+
+commit 01b0018595845d8a7bd1b458d2ee154163a7a322
+Author: Nishkal <nichurocks02@gmail.com>
+Date:   Thu Oct 17 13:47:15 2019 +0200
+
+    edited addDevice.php and intialized few missing variables and added the fist version of test script to check the addDevice.php
+
+commit 0a541117172e17c260e5c67536cbe7e553e7b81d
+Author: nishkal gupta <nishkalrocks02@gmail.com>
+Date:   Thu Oct 17 11:11:19 2019 +0000
+
+    Update README.md
+
+commit cb7d57e396aaeb740decade664235622754fd5dd
+Author: Nishkal <nichurocks02@gmail.com>
+Date:   Tue Oct 15 09:39:08 2019 +0200
+
+    corrected the errors by checking the syntax webserver says ok
+
+commit 2327c18f8f537305bf57b338283b6f83b044e17d
+Author: nishkal gupta <nishkalrocks02@gmail.com>
+Date:   Mon Oct 14 17:30:55 2019 +0000
+
+    Update config.php
+
+commit f0baeaad856e4b04ea208b850833bbc3e7b5e334
+Author: nishkal gupta <nishkalrocks02@gmail.com>
+Date:   Mon Oct 14 13:18:20 2019 +0000
+
+    Upload first version of addDevice.php
+
+commit 86d2dc45e4ee19accff6ad129fb8ea5f4dad436e
+Author: nishkal gupta <nishkalrocks02@gmail.com>
+Date:   Mon Oct 14 13:17:19 2019 +0000
+
+    uploaded first version of config.php
+
+commit c90b838b48cd6ce3e192ea87f2f4220abbb6320f
+Author: nishkal gupta <nishkalrocks02@gmail.com>
+Date:   Sat Oct 12 15:11:41 2019 +0000
+
+    Initial commit
+(END)
