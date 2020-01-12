@@ -1,11 +1,16 @@
 <?php
+include_once('config.php');
 
-include('config.php');
+$result = $db->query('SELECT * FROM info');
 
-$statistics = $db->query('SELECT * FROM info');
 
-while ($row = $statistics->fetchArray()){
-	echo $row['IP']. "|" .$row['PORT']. "|" .$row['COMMUNITY']. "|" .$row['VERSION']. "|" .$row['FIRST_PROBE']. "|" .$row['LATEST_PROBE']. "|" .$row['Failed_attempts']. "\n";
+while ($device_info = $result->fetchArray()) {	
+	echo "\n";
+	echo $device_info[0]. "|" .$device_info[1]. "|" .$device_info[2]. "|" .$device_info[3]. "|" .$device_info[4]. "|" .$device_info[5]. "|" .$device_info[6]."|";
+
+    if (empty($device_info[0]) && empty($device_info[1]) && empty($device_info[2]) && empty($device_info[3]) && empty($device_info[4]) && empty($device_info[5]) &&  empty($device_info[6])){
+    	echo "no data";
+
+    }
+
 }
-}
-?>
