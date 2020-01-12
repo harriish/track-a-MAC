@@ -1,24 +1,37 @@
 <?php
+include('config.php');
 
-include_once('config.php');
-
-$ip = $_GET['ip'];
-$port = $_GET['port'];
-$community = $_GET['community'];
-$version = $_GET['version'];
-
-if(empty($ip) || empty($port)||empty($community) || empty($version)) {
-    echo "FALSE";
-}
-
-else {
-    $removedevice = $db->exec("DELETE FROM switches WHERE ip='$ip' AND port='$port'AND community='$community' AND version='$version'");
-    if(!$removedevice){
-        echo "Failed to remove";
+if (empty($_GET)){
+	echo "none";
     }
-    else {
-        echo "OK Removed";
-    }
+else{
+
+	$ip = $_GET["ip"];
+	$port = $_GET['port'];
+	$community = $_GET['community'];
+	$version = $_GET['version'];
+
+	
+	$check = $db->query("SELECT * FROM info WHERE IP='$ip'");
+	while($i = $check->fetchArray(SQLITE3_ASSOC)){
+		
+			
+		if ($i['IP'] != $ip) {
+			echo 'No IP Found';
+		}
+		else{
+			$sql1 =<<<EOF
+			DELETE FROM info WHERE IP = '$ip';
+EOF;
+			$run1 = $db->exec($sql1);
+			
+			if(!$run1){
+				echo "FAIL";
+			}
+			else{
+				echo "OK removed";
+			}		}
+	}
 
 }
 
